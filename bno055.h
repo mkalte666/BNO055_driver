@@ -526,6 +526,7 @@ u8 dev_addr;/**< i2c device address of bno055 */
 BNO055_WR_FUNC_PTR;/**< bus write function pointer */
 BNO055_RD_FUNC_PTR;/**<bus read function pointer */
 void (*delay_msec)(BNO055_MDELAY_DATA_TYPE);/**< delay function pointer */
+void* userdata;
 };
 /*!
 * @brief struct for accel data read from registers
@@ -2156,6 +2157,8 @@ BNO055_GYRO_ANY_MOTION_THRES_ADDR
 /**************************************************/
 /**\name INITIALIZATION AND REVISION ID FUNCTIONS */
 /**************************************************/
+void bno055_set_active(struct bno055_t *bno055);
+struct bno055_t* bno055_get_active();
 /*!
  *	@brief
  *	This API is used for initialize
@@ -2165,7 +2168,6 @@ BNO055_GYRO_ANY_MOTION_THRES_ADDR
  *	revision id and page id
  *
  *	@param  bno055 - structure pointer
- *
  *
  *	@return results of bus communication function
  *	@retval 0 -> BNO055_SUCCESS
